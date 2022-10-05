@@ -1,19 +1,19 @@
 """Dynamically pull down links to all universities in Iran
 
 """
-import bs4 as bs
-import requests
 import re
 import csv
+import bs4 as bs
+import requests
 
 
 BASE_URL = 'https://www.4icu.org/ir'
 
 
-local_store = dict()
+local_store = {}
 
 if __name__ == "__main__":
-    data = requests.get(BASE_URL)
+    data = requests.get(BASE_URL, timeout=10)
     soup = bs.BeautifulSoup(data.text, 'html.parser')
     tds = soup.select("td")
     for i in range(1, len(tds), 3):
@@ -26,13 +26,13 @@ if __name__ == "__main__":
             pass
 
 # /reviews/10441.htm
-for index in local_store:
+for index in local_store.items():
     town, link = local_store[index]
     name = link.text
     match = re.search(r'/reviews(.)*\"', str(link))
     review_link = match.group(0)[:-1]
     modified_url = BASE_URL[:-3]+review_link
-    page = requests.get(modified_url)
+    page = requests.get(modified_url, timeout=10)
     soup = bs.BeautifulSoup(page.text, 'html.parser')
     rows = soup.select('td')
     for row in rows:
@@ -41,13 +41,9 @@ for index in local_store:
             URL = match.group(0)[1:-1]
             local_store[index] = [name, town, URL]
 
-with open('university_list.csv', 'w', newline='') as csvfile:
+with open('university_list.csv', 'w', newline='', encoding="utf-8") as csvfile:
     row_writer = csv.writer(csvfile, delimiter=';',
                             quotechar='|',
                             quoting=csv.QUOTE_MINIMAL)
-
-    for index in local_store:
+    for index in local_store.items():
         row_writer.writerow(local_store[index])
-
-    
-    
