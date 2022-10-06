@@ -21,13 +21,12 @@ if __name__ == "__main__":
             if 'button' in str(tds[i+2]):
                 break
             local_store[i] = [str(tds[i+2])[4:-5], tds[i+1]]
-            # print(local_store[i])
         except IndexError:
             pass
 
-# /reviews/10441.htm
-for index in local_store.items():
+for index in local_store.keys():
     town, link = local_store[index]
+
     name = link.text
     match = re.search(r'/reviews(.)*\"', str(link))
     review_link = match.group(0)[:-1]
@@ -45,5 +44,5 @@ with open('university_list.csv', 'w', newline='', encoding="utf-8") as csvfile:
     row_writer = csv.writer(csvfile, delimiter=';',
                             quotechar='|',
                             quoting=csv.QUOTE_MINIMAL)
-    for index in local_store.items():
+    for index in local_store.keys():
         row_writer.writerow(local_store[index])
