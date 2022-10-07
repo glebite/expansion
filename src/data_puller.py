@@ -1,5 +1,6 @@
 import csv
 import requests
+from multiprocessing import Pool
 
 
 class DataPuller:
@@ -13,18 +14,19 @@ class DataPuller:
             for row in reader:
                 self.data.append(row)
 
-
+def checkurl(line):
+    try:
+        r = requests.get(line[-1], timeout=10)
+    except:
+        print(f'URL error: {line[0]:60s} {line[-1]}')
+    else:
+        pass
+    
 def main():
     x = DataPuller('../data/university_list.csv')
     x.read()
-    for line in x.data:
-        try:
-            r = requests.get(line[-1], timeout=10)
-            print(r, line[0], len(r.text)/r.elapsed.total_seconds())
-        except Exception as e:
-            print(line[0], 'failure')
-            pass
-
+    p = Pool(processes=20)
+    result = p.map(checkurl, x.data)
 
 
 if __name__ == "__main__":
