@@ -3,7 +3,7 @@ import requests
 from multiprocessing import Pool
 from dataclasses import dataclass, field
 from collections import Counter
-
+from datetime import datetime
 
 @dataclass
 class SiteStatus:
@@ -55,4 +55,10 @@ class DataPuller:
 if __name__ == "__main__":
     pulled_data = DataPuller('../data/university_list.csv')
     presence_counter = pulled_data.process_presence_count()
-    print(presence_counter)
+    now = datetime.now()
+    date_stuff = now.strftime("%Y:%m:%dT%H:%M:%S")
+    print(f'{date_stuff},'
+          f'{presence_counter["okay"]},'
+          f'{presence_counter["blocked"]},'
+          f'{presence_counter["errors"]},'
+          f'{presence_counter["other"]}')
