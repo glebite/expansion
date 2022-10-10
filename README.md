@@ -39,7 +39,15 @@ Build a virtual environment and start installing the requirements:
 > (add)
 > */15 * * * * /usr/bin/bash -c 'cd /home/luser/projects/expansion/src && source /home/luser/projects/expansion/venv/bin/activate && python3 /home/luser/projects/expansion/src/data_puller.py >> /home/luser/projects/expansion/data.txt'  
 
-3) 
+3) produce graphs:  
+(still in venv)
+> $ python3 graph.py
+
+4) share and enjoy - watch for the "Okay" field dropping - that means bad stuff is happening...
+
+
+
+
 
 
 
