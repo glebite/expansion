@@ -23,27 +23,27 @@ Build a virtual environment and start installing the requirements:
 
 ## Workflow:
 (assuming you're still in the venv from Installation)  
-0) acquire the list of universities from a ranking site:
+1) acquire the list of universities from a ranking site:  
 > $ cd src  
 > $ python3 acquire_universities.py  
 (this puts a university_list.csv file in to the local directory)  
 > $ mkdir ../data  
 > $ mv university_list.csv ../data  
 
-1) pull the data goodness down:  
+2) pull the data goodness down:  
 > $ python3 data_puller.py  
 2022-10-10T11:50:27,128,120,60,3  
 
-2) rinse and repeat OR setup crontab...  
+3) rinse and repeat OR setup crontab...  
 > $ crontab -e
 > (add)
 > */15 * * * * /usr/bin/bash -c 'cd /home/luser/projects/expansion/src && source /home/luser/projects/expansion/venv/bin/activate && python3 /home/luser/projects/expansion/src/data_puller.py >> /home/luser/projects/expansion/data.txt'  
 
-3) produce graphs:  
+4) produce graphs:  
 (still in venv)
 > $ python3 graph.py
 
-4) share and enjoy - watch for the "Okay" field dropping - that means bad stuff is happening...
+5) share and enjoy - watch for the "Okay" field dropping - that means bad stuff is happening...
 
 
 
