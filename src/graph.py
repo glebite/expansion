@@ -4,9 +4,9 @@ import time
 import pandas as pd
 from matplotlib import pyplot as plt
 
-def extract_min_max(df):
-    df2 = partial_df.loc[partial_df['Down'].idxmax()]
-    df3 = partial_df.loc[partial_df['Down'].idxmin()]
+def extract_min_max(cdf):
+    df2 = cdf.loc[cdf['Down'].idxmax()]
+    df3 = cdf.loc[cdf['Down'].idxmin()]
     max = df2['Down']
     min = df3['Down']
     return min, max
