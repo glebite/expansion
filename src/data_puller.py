@@ -52,7 +52,7 @@ class DataPuller:
         status.link = line
         url = line[-1]
         try:
-            r = requests.get(url, timeout=30)
+            r = requests.get(url, timeout=20)
             if r.status_code == 403:
                 status.blocked = True
             elif r.status_code == 200:
@@ -69,7 +69,7 @@ class DataPuller:
         """process_presence_count
         """
         presence_counter = Counter()
-        processing_pool = Pool(processes=20)
+        processing_pool = Pool(processes=300)
         results = processing_pool.map(self.checkurl, self.data)
         for thing in results:
             count_struct = {k: v for k, v in thing.__dict__.items() if k != 'link'}
