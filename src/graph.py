@@ -6,6 +6,8 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 def extract_min_max(cdf):
+    """
+    """
     df2 = cdf.loc[cdf['Down'].idxmax()]
     df3 = cdf.loc[cdf['Down'].idxmin()]
     max = df2['Down']
@@ -13,6 +15,8 @@ def extract_min_max(cdf):
     return min, max
 
 def main():
+    """
+    """
     offset = time.timezone if (time.localtime().tm_isdst == 0) else time.altzone
     offset = offset / 60 / 60 * -1
     plt.rcParams["figure.figsize"] = [7.00, 3.50]
