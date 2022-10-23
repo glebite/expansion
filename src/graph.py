@@ -24,6 +24,7 @@ def main():
     df = pd.read_csv("../data.txt", header=None)
     df.columns = ['Date', 'Okay', 'Blocked', 'Down', 'Other']
     partial_df = df.tail(32)
+    last_df = df.tail(1)    
     partial_df.plot(x='Date', y = ['Okay', 'Blocked', 'Down', 'Other'])
     plt.grid()
     plt.title('Criteria over time')
@@ -35,7 +36,9 @@ def main():
     print(f'Recent    : {min=} {max=}')
     min, max = extract_min_max(df)
     print(f'Historical: {min=} {max=}')
-
+    min, max = extract_min_max(last_df)
+    print(f'Latest    : {min=} {max=}')
+    
 
 if __name__ == "__main__":
     main()
