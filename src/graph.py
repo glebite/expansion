@@ -6,7 +6,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 
 def extract_min_max(cdf):
-    """
+    """Extract max and min values for 'Down' in a dataframe.
     """
     df2 = cdf.loc[cdf['Down'].idxmax()]
     df3 = cdf.loc[cdf['Down'].idxmin()]
