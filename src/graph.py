@@ -31,6 +31,8 @@ def main():
     plt.ylabel('Criteria count')
     plt.xlabel(f'Time (GMT{offset})')
     plt.xticks(rotation=90)
+
+    plt.legend(loc=(1.04, 0))
     plt.savefig('graph.png')
     min, max = extract_min_max(partial_df)
     print(f'Recent    : {min=} {max=}')
