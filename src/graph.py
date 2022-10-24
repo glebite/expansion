@@ -39,7 +39,7 @@ def main():
     min, max = extract_min_max(df)
     print(f'Historical: {min=} {max=}')
     min, max = extract_min_max(last_df)
-    print(f'Latest    : {min=} {max=}')
+    print(f'Latest    : {max=}')
     
 
 if __name__ == "__main__":
