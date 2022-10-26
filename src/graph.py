@@ -1,5 +1,11 @@
 """graph.py
 
+Convert the data read in into pandas dataframe and then
+graph out the criteria over time.
+
+Also dump out min/max for all time, min/max for
+recent data and the current reading for Down.
+
 """
 import time
 import pandas as pd
