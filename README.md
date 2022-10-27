@@ -2,7 +2,7 @@
 It is now the expansion of an older tool to monitor university sites in Iran (for now)
 
 ## Introduction:
-Knowledge is power.  It just is.  The Illegal Regime in Iran knows this.  They remember
+Knowledge is power.  It just is.  The Illegal regime in Iran knows this.  They remember
 how they enlisted the students back in 1979 to help with the unrest.  History is repeating
 but now we can watch for when the government restricts access to the schools.  This toolset
 helps with that.  Fork and improve!!!  
@@ -41,7 +41,7 @@ Build a virtual environment and start installing the requirements:
 
 4) produce graphs:  
 (still in venv)  
-> $ python3 graph.py
+> $ python3 graph.py  
 Recent    : min=54 max=184  
 Historical: min=52 max=184  
 Latest    : max=60  
