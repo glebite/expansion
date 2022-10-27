@@ -41,7 +41,10 @@ Build a virtual environment and start installing the requirements:
 
 4) produce graphs:  
 (still in venv)  
-> $ python3 graph.py  
+> $ python3 graph.py
+Recent    : min=54 max=184  
+Historical: min=52 max=184  
+Latest    : max=60  
 
 5) share and enjoy - watch for the "Okay" field dropping - that means bad stuff is happening...
 
