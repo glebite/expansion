@@ -11,6 +11,7 @@ import time
 import pandas as pd
 from matplotlib import pyplot as plt
 
+
 def extract_min_max(cdf):
     """Extract max and min values for 'Down' in a dataframe.
     """
@@ -20,8 +21,11 @@ def extract_min_max(cdf):
     min = df3['Down']
     return min, max
 
+
 def main():
     """
+    Essentially, open up the file, and then look at the last 8 hours.
+
     """
     offset = time.timezone if (time.localtime().tm_isdst == 0) else time.altzone
     offset = offset / 60 / 60 * -1
