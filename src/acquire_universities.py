@@ -27,8 +27,7 @@ BASE_URL = 'https://www.4icu.org/ir'
 local_store = {}
 
 
-if __name__ == "__main__":
-    # TODO: move this to a "main" function
+def main():
     data = requests.get(BASE_URL, timeout=10)
     soup = bs.BeautifulSoup(data.text, 'html.parser')
     tds = soup.select("td")
@@ -72,3 +71,7 @@ if __name__ == "__main__":
                                     quoting=csv.QUOTE_MINIMAL)
             for index in local_store.keys():
                 row_writer.writerow(local_store[index])
+
+
+if __name__ == "__main__":
+    main()
