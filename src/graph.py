@@ -14,6 +14,13 @@ from matplotlib import pyplot as plt
 
 def extract_min_max(cdf):
     """Extract max and min values for 'Down' in a dataframe.
+
+    Parameters:
+    cdf (DataFame): contains the data to focus on
+
+    Returns:
+    min (int): minimum value from the input data
+    max (int): maximum value from the input data
     """
     df2 = cdf.loc[cdf['Down'].idxmax()]
     df3 = cdf.loc[cdf['Down'].idxmin()]
@@ -26,6 +33,9 @@ def main():
     """
     Essentially, open up the file, and then look at the last 8 hours.
 
+    Plot the Okay, Blocked, Down, and Other fields.
+
+    Text output of mins, max, and values.
     """
     offset = time.timezone if (time.localtime().tm_isdst == 0) else time.altzone
     offset = offset / 60 / 60 * -1
