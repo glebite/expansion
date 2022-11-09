@@ -32,6 +32,12 @@ class DataPuller:
         
         This code will attempt to read the file during
         creation.
+
+        Parameters:
+        file_name (str): the name of the file
+
+        Returns:
+        n/a
         """
         self.file_name = file_name
         self.data = []
