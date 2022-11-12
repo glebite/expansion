@@ -29,6 +29,10 @@ def extract_min_max(cdf):
     return min, max
 
 
+EIGHT_HOURS = 4 * 8
+LAST_ENTRY = 1
+
+
 def main():
     """
     Essentially, open up the file, and then look at the last 8 hours.
@@ -43,15 +47,14 @@ def main():
     plt.rcParams["figure.autolayout"] = True
     df = pd.read_csv("../data.txt", header=None)
     df.columns = ['Date', 'Okay', 'Blocked', 'Down', 'Other']
-    partial_df = df.tail(32)
-    last_df = df.tail(1)    
+    partial_df = df.tail(EIGHT_HOURS)
+    last_df = df.tail(LAST_ENTRY)
     partial_df.plot(x='Date', y = ['Okay', 'Blocked', 'Down', 'Other'])
     plt.grid()
     plt.title('Criteria over time')
     plt.ylabel('Criteria count')
     plt.xlabel(f'Time (GMT{offset})')
     plt.xticks(rotation=90)
-
     plt.legend(loc=(1.04, 0))
     plt.savefig('graph.png')
     min, max = extract_min_max(partial_df)
